@@ -10,7 +10,7 @@
 
 另一方面，为了尽可能获得更多的数据样本，考虑重叠采样，如下图所示。其中，Stride表示两次相邻的采样之间的间隔步长。
 
-![Alt text](https://github.com/ittlelittlewhhite09/Bearing_Fault_recognition/raw/master/Screenshots/1.png)                          
+![Alt text](https://github.com/ittlelittlewhhite09/Bearing_Fault_recognition/raw/main/Screenshots/1.png)                          
 
 ## 3 VGG architecture
 
