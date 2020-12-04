@@ -25,7 +25,7 @@
 每层卷积层后面还添加一个批量归一化层（BatchNormalization），目的是为了获得更加平滑的优化地形，以提高优化效率，除此以外它也是一种正则化方法，有助于提高网络的泛化能力。通过两层卷积层和批量归一化层之后，得到特征变换后的输出，与最开始的输入  相加得到最终输出  。
 
 ![3](https://github.com/littlelittlewhite09/Bearing_Fault_recognition/raw/main/Screenshots/3.png) 
-## 4.2 ResNet architecture
+### 4.2 ResNet architecture
 将上述残差块堆叠起来，形成深度残差网络，如图所示（批量归一化层并入了前面的卷积层，这里省略）。振动信号先通过一层简单的卷积层，该卷积层有16个3*1的卷积核，步长为1，不改变时序信号的长度；接着依次通过12个残差块，当步长为n（n！=1）时，时序信号的长度则变为原来的1/n；最后再依次通过全局平均池化层和全连接层，得到最终的预测结果。
 
 ![4](https://github.com/littlelittlewhite09/Bearing_Fault_recognition/raw/main/Screenshots/4.png) 
