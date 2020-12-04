@@ -16,7 +16,7 @@
 
 采用的网络参考了VGG13网络，如图所示。该网络的输入为时序长度512的振动加速度信号，时序信号先通过7个Conv-Conv-Pooling单元，再通过4层全连接层，最后由softmax层得到预测结果。7个单元都是由两个卷积层和一个最大池化层组成。每个单元的卷积核均采用31大小，通过padding填充，使得每次卷积操作都不改变序列长度；池化窗口大小与窗口移动步长相关联：当步长为4时，序列长度因为最大池化下采样会变为原来的四分之一，为了尽可能保留特征映射信息，选择41大小的池化窗口。当步长为2时窗口为21也是同理。
 
-![image-20201204164353421](C:\Users\11591\AppData\Roaming\Typora\typora-user-images\image-20201204164353421.png)
+![2](https://github.com/littlelittlewhite09/Bearing_Fault_recognition/raw/main/Screenshots/2.png) 
 
 ## 4 ResNet architecture
 
@@ -24,8 +24,7 @@
 
 每层卷积层后面还添加一个批量归一化层（BatchNormalization），目的是为了获得更加平滑的优化地形，以提高优化效率，除此以外它也是一种正则化方法，有助于提高网络的泛化能力。通过两层卷积层和批量归一化层之后，得到特征变换后的输出，与最开始的输入  相加得到最终输出  。
 
-![image-20201204164728511](C:\Users\11591\AppData\Roaming\Typora\typora-user-images\image-20201204164728511.png)
-
+![3](https://github.com/littlelittlewhite09/Bearing_Fault_recognition/raw/main/Screenshots/1.png) 
 将上述残差块堆叠起来，形成深度残差网络，如图7所示（批量归一化层并入了前面的卷积层，这里省略）。振动信号先通过一层简单的卷积层，该卷积层有16个3*1的卷积核，步长为1，不改变时序信号的长度；接着依次通过12个残差块，当步长为n（n！=1）时，时序信号的长度则变为原来的1/n；最后再依次通过全局平均池化层和全连接层，得到最终的预测结果。
 
-![image-20201204164754465](C:\Users\11591\AppData\Roaming\Typora\typora-user-images\image-20201204164754465.png)
+![4](https://github.com/littlelittlewhite09/Bearing_Fault_recognition/raw/main/Screenshots/1.png) 
